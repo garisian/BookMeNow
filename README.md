@@ -8,3 +8,6 @@ The final product will have a "Title" and a "URL" field which will automatically
 
 This is ideally meant for me and me alone, but once this is complete I will add a user-option so multiple people can use this app and store their own bookmarks,so they don't overlap or interfere with anyone elses.
 
+
+# Progress
+Finished the layout and extraction of Title and URL. Need to start sample server and make database code
