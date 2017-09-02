@@ -1,13 +1,16 @@
-# BookMeNow (Working Progress)
+# BookMeNow
+BookMeNow is a chome extension that allows the user to quickly bookmark fragements of a webpage and store them for future use.
+Initially created for bookmark sharing but more frequently used to record quotes and phrases for essays and academia-related work.
 
-I always had issues having to alternate between computers because there are certain bookmarks that I saved that are dependent to that browser so I decided to develop a chrome extension that lets you share bookmarks between your browsers on different computers.
+## Usage
+Simply open up any website and click on the extension and "Title" and "URL" fields are automatically populated. Highlighting any chunk of text dynamically updates "Summary" field. 
+
+Below is a demo of the app in action
+
+![demo](screenplays/demo.gif)
 
 
-# Structure
-The final product will have a "Title" and a "URL" field which will automatically be populated based on the web content. The user is given the option to add a description and additionally tags. Clicking finish or some sort of submit button will parse that form and send the data to a remote server. To extract bookmarks, simply type in a tag(s) and the server will return all bookmarks that have that tag(s). 
+## Installation
+Note: BookMeNow is still in active development. Currently implementing accounts and a database to hold the data.
 
-This is ideally meant for me and me alone, but once this is complete I will add a user-option so multiple people can use this app and store their own bookmarks,so they don't overlap or interfere with anyone elses.
-
-
-# Progress
-Finished the layout and extraction of Title and URL. Need to start sample server and make database code
+Clone or manually download the zip for this project. Go to chrome://extensions/ and "Load Unpacked Extensions". Proceed to the directory and select BookMeNow and have fun! 
