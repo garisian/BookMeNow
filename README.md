@@ -14,3 +14,9 @@ Below is a demo of the app in action
 Note: BookMeNow is still in active development. Currently implementing accounts and a database to hold the data.
 
 Clone or manually download the zip for this project. Go to chrome://extensions/ and "Load Unpacked Extensions". Proceed to the directory and select BookMeNow and have fun! 
+
+If you want to change the server, change the following line: 
+
+      var postUrl = 'http://httpbin.org/post';
+
+in js/popup.js. Make sure the server accepts the appropriate POST requests and sends back proper response status'.
