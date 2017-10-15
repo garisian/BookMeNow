@@ -16,7 +16,8 @@ function saveBookmark()
     event.preventDefault();
 
     // The URL to POST our data to
-    var postUrl = 'http://httpbin.org/post';
+    var postUrl = "http://localhost:9635/datasource"
+    //var postUrl = 'http://httpbin.org/post';
 
     // Should return method not allowed error
     // var postUrl = 'http://httpbin.org/';
@@ -28,10 +29,11 @@ function saveBookmark()
     var url = encodeURIComponent(document.getElementById('url').value);
     var summary = encodeURIComponent(document.getElementById('summary').value);
     var tags = encodeURIComponent(document.getElementById('tags').value);
-    var params = 'title=' + title + 
-                 '&url=' + url + 
-                 '&summary=' + summary +
-                 '&tags=' + tags;
+    var params = 'addData: {title=' + title + 
+                 ',url=' + url + 
+                 ',summary=' + summary +
+                 ',tags=' + tags+
+                 "}";
 
     // Replace spaces with + 
     params = params.replace(/%20/g, '+');
