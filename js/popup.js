@@ -16,27 +16,26 @@ function saveBookmark()
     event.preventDefault();
 
     // The URL to POST our data to
-    var postUrl = "http://localhost:9635/datasource"
+    var postUrl = "http://localhost:9635"
     //var postUrl = 'http://httpbin.org/post';
 
     // Should return method not allowed error
     // var postUrl = 'http://httpbin.org/';
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', postUrl, true);
 
     var title = encodeURIComponent(document.getElementById('title').value);
     var url = encodeURIComponent(document.getElementById('url').value);
     var summary = encodeURIComponent(document.getElementById('summary').value);
     var tags = encodeURIComponent(document.getElementById('tags').value);
-    var params = 'addData: {title=' + title + 
-                 ',url=' + url + 
-                 ',summary=' + summary +
-                 ',tags=' + tags+
-                 "}";
+    var params = '?title=' + title + 
+                 '&url=' + url + 
+                 '&summary=' + summary +
+                 '&tags=' + tags;
 
+    xhr.open('POST', postUrl+params, true);
     // Replace spaces with + 
-    params = params.replace(/%20/g, '+');
+    //params = params.replace(/%20/g, '+');
 
     // Set correct header for form data 
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -60,7 +59,7 @@ function saveBookmark()
     };
 
     // Send the request and set status
-    xhr.send(params);
+    xhr.send();
     saveStatus.innerHTML = 'Saving...';
 }
 
