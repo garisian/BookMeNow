@@ -28,12 +28,13 @@ function saveBookmark()
     var url = encodeURIComponent(document.getElementById('url').value);
     var summary = encodeURIComponent(document.getElementById('summary').value);
     var tags = encodeURIComponent(document.getElementById('tags').value);
-    var params = '?title=' + title + 
-                 '&url=' + url + 
-                 '&summary=' + summary +
-                 '&tags=' + tags;
+    var params = '{\"title\":\"' + title + 
+                 '\",\"url\":\"' + url + 
+                 '\",\"summary\":\"' + summary +
+                 '\",\"tags\":\"' + tags+
+                 "\"}";
 
-    xhr.open('POST', postUrl+params, true);
+    xhr.open('POST', postUrl+"?type=addData&data="+params, true);
     // Replace spaces with + 
     //params = params.replace(/%20/g, '+');
 
