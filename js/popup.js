@@ -57,9 +57,6 @@ function saveBookmark()
                 window.setTimeout(window.close, 1000);
             } else {
                 // Update with error from server
-      document.getElementById('title').value = xhr.readyState;
-
-                //document.getElementById('title').value = xhr.status;
                 saveStatus.innerHTML = 'Error saving: Server Error -->' + xhr.statusText;
             }
         }
@@ -70,18 +67,75 @@ function saveBookmark()
     saveStatus.innerHTML = 'Saving...';
 }
 
+// Submit bookmark to the server onclick "Save Bookmark"
+function emailBookmarks()
+{   
+    // Prevents instant refresh of App and shows user urlPosting Status'
+    event.preventDefault();
+
+    // The URL to POST our data to
+    var postUrl = "http://localhost:9635"
+    //var postUrl = 'http://httpbin.org/post';
+
+    // Should return method not allowed error
+    // var postUrl = 'http://httpbin.org/';
+
+    var xhr = new XMLHttpRequest();
+
+    var email = encodeURIComponent(document.getElementById('email').value);
+    var params = '{\"email\":\"' + email +
+                 "\"}";
+
+    xhr.open('POST', postUrl+"?type=emailData&data="+params, true);
+    // Replace spaces with + 
+    //params = params.replace(/%20/g, '+');
+
+    // Set correct header for form data 
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    // Handle request state change events
+    xhr.onreadystatechange = function() 
+    { 
+                
+        if (xhr.readyState == 4) 
+        {
+            emailDataStatus.innerHTML = '';
+            if (xhr.status == 200) 
+            {
+                // Success; close app in 1 second
+                emailDataStatus.innerHTML = 'Emailed!';
+                window.setTimeout(window.close, 1000);
+            } else {
+                // Update with error from server
+                emailDataStatus.innerHTML = 'Error Emailing: Server Error -->' + xhr.statusText;
+            }
+        }
+    };
+
+    // Send the request and set status
+    xhr.send();
+    emailDataStatus.innerHTML = 'Emailing...';
+}
+
 // Run when popup is loaded
 window.addEventListener('load', function(evt) 
 {    
-	// Test To see saving code works
+	// Created to update Status of save submit and email
     saveStatus = document.getElementById('saveStatus');
+    emailDataStatus = document.getElementById('emailDataStatus');
 
-	document.getElementById('addbookmark').addEventListener('submit', saveBookmark);
+	//document.getElementById('testbookmark').addEventListener('submit', saveBookmark);
 
     // Injects content.js into the current tab's HTML
     chrome.runtime.getBackgroundPage(function(eventPage) 
     {
         eventPage.getPageDetails(onPageDetailsReceived);
     });
+    var element = document.getElementById('save');
+    element.onclick = function () { saveBookmark(); };
+
+    var element = document.getElementById('emailData');
+    element.onclick = function () { emailBookmarks(); };
+
 });
 
