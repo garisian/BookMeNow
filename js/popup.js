@@ -28,9 +28,11 @@ function saveBookmark()
     var url = encodeURIComponent(document.getElementById('url').value);
     var summary = encodeURIComponent(document.getElementById('summary').value);
     var tags = encodeURIComponent(document.getElementById('tags').value);
+    var email = encodeURIComponent(document.getElementById('email').value);
     var params = '{\"title\":\"' + title + 
                  '\",\"url\":\"' + url + 
                  '\",\"summary\":\"' + summary +
+                 '\",\"email\":\"' + email +
                  '\",\"tags\":\"' + tags+
                  "\"}";
 
@@ -44,6 +46,7 @@ function saveBookmark()
     // Handle request state change events
     xhr.onreadystatechange = function() 
     { 
+                
         if (xhr.readyState == 4) 
         {
             saveStatus.innerHTML = '';
@@ -54,6 +57,9 @@ function saveBookmark()
                 window.setTimeout(window.close, 1000);
             } else {
                 // Update with error from server
+      document.getElementById('title').value = xhr.readyState;
+
+                //document.getElementById('title').value = xhr.status;
                 saveStatus.innerHTML = 'Error saving: Server Error -->' + xhr.statusText;
             }
         }
