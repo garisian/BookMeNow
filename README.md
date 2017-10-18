@@ -9,6 +9,17 @@ Below is a demo of the app in action
 
 ![demo](screenplays/demo.gif)
 
+## Retrieve 
+Data
+Enter the email which the data was saved onto and the server will send an email with all the bookmarked data.
+
+
+
+Below is a demo of the feature
+
+
+
+![demo](screenplays/emailDemo.gif)
 
 ## Installation
 Note: BookMeNow is still in active development. Currently implementing accounts and a database to hold the data.
