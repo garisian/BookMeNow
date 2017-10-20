@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Bookmark Extension Example",
-    "description": "Create bookmarks automatically and share them with your friends",
+    "name": "BookMeNow",
+    "description": "Create multiple bookmarks and have it all sent to you by email",
     "version": "0.2",
     "background": {
         "scripts": ["js/event.js"],
